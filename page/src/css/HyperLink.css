@@ -1,0 +1,27 @@
+.HyperLink {
+    font-family: sans-serif;
+    margin-bottom: 1.5em;
+    text-decoration: none;
+    list-style: none;
+    margin-bottom: 1em; 
+}
+
+.HyperLink a
+{
+    text-decoration: none;
+    font-weight: bold;
+    color: #38C;
+    
+}
+
+.HyperLink a:visited
+{
+    color: #38C;
+}
+
+.HyperLink .details
+{
+    color: #888;
+    font-size: x-small;
+    margin: 0;
+}
