@@ -5,14 +5,17 @@ import json
 import time
 import re
 import codecs
-
+import os
 import scraper
+from scraper import ensure_dir
 
 URL = 'http://www.austlii.edu.au'
 
 
 def main():
     # Read state and court info
+    ensure_dir('data')
+
     db_html_text = scraper.get_database_page(False)
     state_map = parse_database_page(db_html_text)
 
@@ -28,19 +31,20 @@ def main():
     with open('data/court-years.json', 'w') as f:
         json.dump(year_map, f, indent=2)
 
-    year_page_gen = scraper.get_court_year_pages(False, state_map, year_map)
-    for state_slug, court_slug, year, text in year_page_gen:
-        if state_slug != 'vic':
-            continue
-        court_url = state_map[state_slug]['courts'][court_slug]['url']
-        year_cases = parse_year_page(text, court_url)
-        try:
-            state_map[state_slug]['courts'][court_slug]['years'][year] = year_cases
-        except KeyError:
-            state_map[state_slug]['courts'][court_slug]['years'] = {}
 
-    with codecs.open('data/cases.json', 'w', encoding="utf-8") as f:
-        json.dump(state_map, f, indent=2)
+    for state_slug in state_map.keys():
+        for court_slug in state_map[state_slug]['courts'].keys():
+            file_path = 'data/{}/{}.json'.format(state_slug, court_slug)
+            ensure_dir('data/{}/'.format(state_slug))
+            years = year_map[court_slug]
+            court_url = state_map[state_slug]['courts'][court_slug]['url']
+            cases = {
+                year: parse_year_page(text, court_url) for year, text
+                in scraper.get_court_year_pages(False, years, state_slug, court_slug)
+            }
+
+            with codecs.open(file_path, 'w', encoding="utf-8") as f:
+                 json.dump(cases, f, indent=2)
 
 
 def parse_database_page(text):
