@@ -33,7 +33,8 @@ def upload(path='data/'):
             key = filename.replace('data/', '').replace('\\', '/')
             bucket.upload_fileobj(f_compressed, key, {
                 'ContentType': 'application/json', 
-                'ContentEncoding': 'gzip'
+                'ContentEncoding': 'gzip',
+                'ACL': 'public-read'
             })
             print('done')
 
