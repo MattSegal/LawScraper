@@ -1,0 +1,24 @@
+{
+  "filters": {
+    // text used to filter down the results
+  },
+  "states": {
+    "data": {
+        // all the states, and the courts that belong
+    },
+    "meta": {
+      "updating": null,
+    },
+  },
+  "cases": {
+    "data": {
+        // cases, keyed by court slug
+    },
+    "meta": {
+      "updating": null,
+    },
+  },
+  "results": [
+    // data returned from filtering
+  ]
+}

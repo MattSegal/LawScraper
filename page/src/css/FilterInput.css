@@ -6,6 +6,13 @@
     margin-bottom: 1em;
 }
 
+    
+
+
+.FilterInput.col + .FilterInput.col {
+    margin-left: 1em
+}
+
 .FilterInput.invalid {
     color: #e13d3d;
     outline-color: #e13d3d;

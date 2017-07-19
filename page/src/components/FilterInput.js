@@ -9,6 +9,7 @@ export default class FilterInput extends Component
     filter: PropTypes.func,
     validator: PropTypes.func,
     placeholder: PropTypes.string,
+    className: PropTypes.string,
   }
 
   constructor(props) 
@@ -44,10 +45,11 @@ export default class FilterInput extends Component
 
   render() 
   {
+    const {className} = this.props
     const {isValid} = this.state
     return (
       <input 
-        className={`FilterInput ${isValid ? 'valid' : 'invalid'}`}
+        className={`FilterInput ${isValid ? 'valid' : 'invalid'} ${className}`}
         autoFocus
         type="text" 
         placeholder={this.props.placeholder}

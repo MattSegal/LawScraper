@@ -1,6 +1,9 @@
 import C from './constants'
 
 export default {
+  [C.STATE]: (state, searchText) => 
+    searchText === '' || searchText === state,
+
   [C.COURT]: (courtCase, searchText) => 
     true,
   
