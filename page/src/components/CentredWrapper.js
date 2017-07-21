@@ -7,12 +7,16 @@ export default class CenterWrapper extends Component {
   }
 
   render() {
-    return (
-      <div className="CentredWrapper" style={{
-        margin: "0 auto",
+    const outerStyle = {padding: '0 10px'}
+    const innerStyle = {
+        margin: '0 auto',
         maxWidth: this.props.maxWidth + 'px'
-      }}>
-        {this.props.children}
+      }
+    return (
+      <div className="CentredWrapper" style={outerStyle}>
+        <div style={innerStyle}>
+          {this.props.children}
+        </div>
       </div>
     )
   }

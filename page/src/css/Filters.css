@@ -1,0 +1,45 @@
+.Filter
+{
+    color: #333;
+    margin-bottom: 1em;
+    height: 36px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Fuck me, right?*/
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #aaa;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #aaa;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #aaa;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #aaa;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #aaa;
+}
+
+.FilterInput
+{  
+    box-sizing: border-box;
+    padding: 0.5em;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+.FilterInput.col + .FilterInput.col {
+    margin-left: 1em
+}
+
+.FilterInput.invalid {
+    color: #e13d3d;
+    outline-color: #e13d3d;
+    font-weight: bold;
+}

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-import '../css/FilterInput.css'
+import '../css/Filters.css'
 
 export default class FilterSelect extends Component 
 {
@@ -34,7 +34,7 @@ export default class FilterSelect extends Component
     const {selected} = this.state
     return ( 
       <Select
-        className={''}
+        className={'Filter'}
         value={selected ? selected.value : ''} 
         options={options}
         placeholder={`Select the ${this.props.placeholder}`}

@@ -1,5 +1,4 @@
 import types from './types'
-import {fetchCourt} from './fetch'
 
 export const updateCaseFilter = (filter, text) => {
 

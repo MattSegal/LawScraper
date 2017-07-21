@@ -7,8 +7,6 @@ export default class HyperLink extends PureComponent {
     link: PropTypes.shape({
       name: PropTypes.string,
       url: PropTypes.string,
-      court: PropTypes.string,
-      state: PropTypes.string,
       date: PropTypes.string,
     })
   }
@@ -26,7 +24,7 @@ export default class HyperLink extends PureComponent {
             {link.name}
           </a>
           <p className="details">
-            {link.court} - {link.state} - {link.date}
+            {link.date}
           </p>
       </li>
     )

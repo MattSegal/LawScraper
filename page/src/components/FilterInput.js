@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import '../css/FilterInput.css'
 import PropTypes from 'prop-types'
+import '../css/Filters.css'
 
 
 export default class FilterInput extends Component 
@@ -28,7 +28,6 @@ export default class FilterInput extends Component
       text: newText
     })
     let isValid
-    console.warn(this.props.validator(newText))
     if (this.props.validator(newText)) 
     {
       this.props.filter(newText)
@@ -49,7 +48,7 @@ export default class FilterInput extends Component
     const {isValid} = this.state
     return (
       <input 
-        className={`FilterInput ${isValid ? 'valid' : 'invalid'} ${className}`}
+        className={`Filter FilterInput ${isValid ? 'valid' : 'invalid'} ${className}`}
         autoFocus
         type="text" 
         placeholder={this.props.placeholder}
