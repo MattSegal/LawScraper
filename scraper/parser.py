@@ -34,6 +34,7 @@ def main():
 
     for state_slug in state_map.keys():
         for court_slug in state_map[state_slug]['courts'].keys():
+            print "Processing {} - {}".format(state_slug, court_slug)
             file_path = 'data/{}/{}.json'.format(state_slug, court_slug)
             ensure_dir('data/{}/'.format(state_slug))
             years = year_map[court_slug]
@@ -129,7 +130,11 @@ def parse_court_page(text):
 
 def parse_year_page(text, root_url):
     def parse_url(url):
-        return root_url + re.sub(r'\.\.\/', '', url)
+        skip = (
+            '/cgi-bin/LawCite' in url or
+            'http://' in url
+        )
+        return root_url + re.sub(r'\.\.\/', '', url), skip
 
     def parse_name(text):
         return text.split('[')[0].strip()
@@ -146,9 +151,13 @@ def parse_year_page(text, root_url):
     year_cases = []
     for ul in soup.html.body.find_all_next('ul'):
         for a in ul('a'):
+            url, skip = parse_url(a.get_attribute_list('href')[0])
+            if skip:
+                print '\tSkipping {}'.format(url)
+                continue
             year_cases.append({
                 'name':parse_name(a.text),
-                'url': parse_url(a.get_attribute_list('href')[0]),
+                'url': url,
                 'date': parse_date(a.text),
             })
     return year_cases
