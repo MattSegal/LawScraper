@@ -19,7 +19,7 @@ def get_content_type(filename):
         'jpeg': 'image/jpeg',
         'png': 'image/png',
         'gif': 'image/gif',
-        'ico': 'image/x-icon',
+        'ico': 'image/vnd.microsoft.icon',
         'js': 'application/javascript',
         'json': 'application/json'
     }

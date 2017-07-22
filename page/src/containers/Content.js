@@ -31,7 +31,7 @@ const filterCases = (cases, filterText) =>
       filterText[C.TITLE] === '' || 
       filterText[C.TITLE].split(' ')
         .reduce((acc, val) => 
-          acc || courtCase.name.toLowerCase().includes(val.toLowerCase()), 
+          acc || (val && courtCase.name.toLowerCase().includes(val.toLowerCase())),
           false
         )
     )

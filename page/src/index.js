@@ -8,7 +8,6 @@ import {lazyLoadMiddleware} from './middleware'
 import './css/index.css'
 import C from './constants'
 import App from './containers/App'
-import registerServiceWorker from './registerServiceWorker'
 import {reducer} from './reducers'
 
 const initialState = {
@@ -44,4 +43,3 @@ ReactDOM.render(
   </Provider>, 
   document.getElementById('root')
 )
-registerServiceWorker()
