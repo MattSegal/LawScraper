@@ -68,31 +68,7 @@ def get_court_year_pages(scrape, years, state_slug, court_slug):
                 text = f.read()
 
         yield year, text
-            
 
-# def get_court_year_pages(scrape, state_map, year_map):
-#     """
-#     Read the HTML for a court's year page on AustLII
-#     """
-#     for state_slug, state_data in state_map.items():
-#         state_courts = state_data['courts']
-#         for court_slug, court in state_courts.items():
-#             years = year_map[court_slug]
-#             for year in years:
-#                 year_page_file =  'html/{}/{}/{}.html'.format(state_slug, court_slug, year)
-#                 if scrape:
-#                     year_url = '{}/{}/'.format(court['url'], year) 
-#                     r = requests.get(year_url, headers=HEADERS)
-#                     text = r.text
-#                     with codecs.open(year_page_file, 'w', encoding="utf-8") as f:
-#                         f.write(text)
-#                 else:
-#                     with codecs.open(year_page_file, 'r', encoding="utf-8") as f:
-#                         text = f.read()
-
-#                 # a bit much
-#                 yield state_slug, court_slug, year, text
-            
 
 def ensure_dir(dir):
     if not os.path.exists(dir):
