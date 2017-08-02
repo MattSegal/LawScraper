@@ -34,7 +34,7 @@ class SearchBox extends Component {
   }
 
   updateFilter = filterName => filterText =>
-    this.props.updateCaseFilter(filterName, filterText)
+    this.props.updateFilter(filterName, filterText)
 
   render() {
     const {states} = this.props
